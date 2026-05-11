@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <title>ternal Mindmap</title>
+      
+     
+</head>
+<body>
+     <p id="r">ここに入力</p>
+    
+    <p class="msg">{{ msg|linebreaksbr }}</p>
+    <div id="toolbar">
+ 
+  <button  class="sitahiroku"   onclick="sitahiro()">+</button>
+  <button  class="sitasemaku" onclick="sitasema()">-</button>
+  <button  class="uehiroku" onclick="uehiro()">+</button>
+  <button class="uesemaku" onclick="uesema()">-</button>
+   <button  class="migihiroku"  onclick="migihiro()">+</button>
+  <button  class="migisemaku"    onclick="migisema()">-</button>
+  <button class="hidarihiroku" onclick="hidarihiro()">+</button>
+  <button class="hidarisemaku" onclick="hidarisema()">-</button>
+  <button class="kesu" onclick="kesu()">丸を消す</button>
+  <input id="colorpicker" type="color" value="#888888">
+  <p class="sitahaba">下幅</p>
+  <p class="uehaba">上幅</p>
+  <p class="migihaba">右幅</p>
+  <p class="hidarihaba">左幅</p>
+  <p class="haikei">背景色</p>
+  <p class="maruiro">丸の色</p>
+</div>
+<svg id="lineLayer"></svg>
+<div id="canvas"></div>
+    <input id="colorpicker2" type="color" value="#888888">
+    <!--<p class="sikaku"></p>-->
+    <!--<p class="line1"></p>-->
+    <p class="line2"></p>
+    
+    <form method="POST" class="terminal-line">
+        {% csrf_token %}
+    
+    </form>
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+<style>
+
+    body{background-color: whitesmoke;
+        color:#2A2A2A;
+        width: 1000px;
+        height: 600px;
+    }
+    #toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+  
+        background: #f3f3f3;
+        border-bottom: 1px solid #ccc;
+  
+        z-index: 7;
+    }
+    #lineLayer{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+    }
+    #canvas {
+        margin-top: 80px; /* ツールバー分ずらす */
+    }
+    .sitahaba{
+        position: fixed;
+        font-size: 15px;
+        top: -7px; 
+        left: 200px;
+        color: #666666;
+    }
+    .uehaba{
+        position: fixed;
+        font-size: 15px;
+        top: 13px;
+        left: 200px;
+        color: #666666;
+    }
+    .migihaba{
+        position: fixed;
+        font-size: 15px;
+        top: 33px;
+        left: 200px;
+        color: #666666;
+    }
+    .hidarihaba{
+        position: fixed;
+        font-size: 15px;
+        top: 53px;
+        left: 200px;
+        color: #666666;
+    }
+    .kesu{
+        position: fixed;
+        height: 80px;
+        top: 10px;
+        left: 120px;
+    }
+    .haikei{
+        position: fixed;
+        left: 305px;
+        top: 3px;
+        font-size: 15px;
+        color: #666666;
+    }
+    .maruiro{
+        position: fixed;
+        left: 305px;
+        top: 45px;
+        font-size: 15px;
+        color:#666666;
+    }
+    .circle{
+    position: absolute;
+
+    min-width: 120px;
+    min-height: 120px;
+
+    border-radius: 50%;
+
+    border: 2px solid #333;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    overflow-wrap: break-word;
+
+    white-space: pre-wrap;
+
+    
+
+    
+}
+    .kensaku{border: 1.2px solid #888888; /*枠の線とその色*/
+        background-color: #444444;  /*枠の中の色*/
+        color: whitesmoke;
+        font-size: 16px; /*文字のサイズ*/
+        padding: 6px; /*枠の線と文字の間隔*/
+        width: 700px;/*横幅*/
+        height: 27px;/*縦幅*/
+        position: fixed;
+        z-index: 20;
+        top: 60px;
+        left: 370px;
+        border-radius: 20px;/*バーの角の丸さ*/}
+    .sikaku{
+        background-color: whitesmoke;
+        border:1.2px solid #666666;
+        z-index: 10;
+        position: fixed;
+        top: -20px;
+        left: 0px;
+        height: 100px;
+       width: 1500px;}
+    .msg{z-index: 1;
+        font-size: 20px;
+        width: 1000px;
+        position: absolute;
+        margin-top: 200px;
+        margin-left: 200px;
+        scrollbar-width: thin;
+        scrollbar-color: #666 #222;}
+    .msg::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .msg::-webkit-scrollbar-track {
+        background: #222222;
+        border-radius: 10px;
+    }
+
+    .msg::-webkit-scrollbar-thumb {
+        background: #666666;
+        border-radius: 10px;
+    }
+    
+    .msg::-webkit-scrollbar-thumb:hover {
+        background: #999999;
+    }
+    .line1{position: fixed;
+        top: 140px;
+        left: 200px;
+        background-color: whitesmoke;
+        height: 2px;
+        width: 1150px;
+        z-index: 11;}
+    .line2{position: fixed;
+    }
+    #myChart{position: relative;
+        left: 200px;}
+    .circle.selected {
+        border: 3px solid #007bff;
+        box-shadow: 0 0 10px rgba(0,123,255,0.6);
+    }
+
+
+    #colorpicker{position: fixed; top: 10px; left: 355px;
+        height: 40px;}
+    #colorpicker2{position: fixed; 
+        height: 40px;
+        top: 50px;
+        left: 355px;
+        z-index: 10;
+        }
+    .sitahiroku{
+        position:fixed;
+        top: 10px;
+        left: 240px;
+    }
+    .sitasemaku{ position: fixed;
+        top: 10px;
+        left: 270px;}
+    .migihiroku{
+        position: fixed;
+        top: 50px;
+        left: 240px;
+    }
+    .migisemaku{
+        position: fixed;
+        top: 50px;
+        left: 270px;
+    }
+    .uehiroku{
+        position: fixed;
+        top: 30px;
+        left: 240px;
+    }
+    .uesemaku{
+        position: fixed;
+        top: 30px;
+        left: 270px;
+    }
+    .hidarihiroku{
+        position: fixed;
+        top: 70px;
+        left: 240px;
+    }
+    .hidarisemaku{
+        position: fixed;
+        top: 70px;
+        left: 270px;
+    }
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!--<canvas id="myChart" width="200" height="200" ></canvas>-->
+<script>
+    const baseHeight = 607;
+    let ueExpand = 0;
+    let sitaExpand = 0; 
+
+    const baseWidth = 1257;   
+    let migiExpand = 0; //ページ広狭　
+    let hidariExpand = 0;
+    function updateHeight(){
+
+    document.body.style.height =
+        (baseHeight + ueExpand + sitaExpand) + "px";
+    }
+    function updateWidth(){
+        document.body.style.width = 
+        (baseWidth + migiExpand + hidariExpand) + "px";
+    }
+
+    function sitahiro(){
+
+    sitaExpand += 500;
+
+    updateHeight();
+}
+    function sitasema(){
+
+    if(sitaExpand > 0){
+
+        sitaExpand -= 500;
+
+        updateHeight();
+    }
+}
+    function migihiro(){                             //横幅広
+        migiExpand +=500;
+       
+        updateWidth();
+        
+    }
+    function migisema(){                     //横幅狭
+        if(migiExpand > 0){
+        migiExpand -= 500;
+    }
+
+        updateWidth();
+        
+
+    }
+    const circle = document.querySelector('.circle');
+    let y = 100;
+    function uehiro(){
+
+    const addSize = 500;
+
+    ueExpand += addSize;
+
+    updateHeight();
+
+    document.querySelectorAll(".circle").forEach(circle => {
+
+        const currentTop =
+            parseInt(circle.style.top) || circle.offsetTop;
+
+        circle.style.top =
+            (currentTop + addSize) + "px";
+    });
+
+    window.scrollBy(0, addSize);
+}
+    function uesema(){
+
+    const addSize = 500;
+
+    if(ueExpand > 0){
+
+        window.scrollBy(0, -addSize);
+
+        ueExpand -= addSize;
+
+        updateHeight();
+
+        document.querySelectorAll(".circle").forEach(circle => {
+
+            const currentTop =
+                parseInt(circle.style.top) || circle.offsetTop;
+
+            circle.style.top =
+                (currentTop - addSize) + "px";
+        });
+    }
+}
+
+function hidarihiro(){
+
+    const addSize = 500;
+
+    hidariExpand += addSize;
+
+    updateWidth();
+
+    document.querySelectorAll(".circle").forEach(circle => {
+
+        const currentLeft =
+            parseInt(circle.style.left) || circle.offsetLeft;
+
+        circle.style.left =
+            (currentLeft + addSize) + "px";
+    });
+
+    window.scrollBy(addSize,0);
+}
+    const color2 = document.querySelector('#colorpicker2');       //丸の色変え
+    const colorBg2 = () => {
+        if (!selectedCircle) return;
+
+  selectedCircle.style.backgroundColor = color2.value;
+    }; 
+    function hidarisema(){
+
+    const addSize = 500;
+
+    if(hidariExpand > 0){
+
+        window.scrollBy(-addSize,0);
+
+        hidariExpand -= addSize;
+
+        updateWidth();
+
+        document.querySelectorAll(".circle").forEach(circle => {
+
+            const currentLeft =
+                parseInt(circle.style.left) || circle.offsetLeft
+
+            circle.style.left =
+                (currentLeft - addSize) + "px";
+        });
+    }
+}
+color2.addEventListener('input', colorBg2)    
+
+    document.querySelector('#r').textContent = 'カラー';          //試し
+    console.log(document.querySelector('#colorpicker').value);
+
+
+const color = document.querySelector('#colorpicker');             //背景色変え
+const colorBg = () => {
+    document.body.style.backgroundColor = color.value; 
+}
+color.addEventListener('input', colorBg)
+
+const ctx = document.getElementById('myChart');
+function kesu(){
+     if(!selectedCircle) return;
+
+    // 関係する線を削除
+    for(let i = edges.length - 1; i >= 0; i--){
+
+        if(
+            edges[i].from === selectedCircle ||
+            edges[i].to === selectedCircle
+        ){
+            edges.splice(i, 1);
+        }
+    }
+
+    // 丸削除
+    selectedCircle.remove();
+
+    selectedCircle = null;
+
+    // 線更新
+    updateLines();
+}
+/*new Chart(ctx, {
+    type: 'pie',  // ←グラフの種類
+    data: {
+        labels: ['月', '火', '水', '木', '金'],  // 横軸
+        datasets: [{
+            label: '勉強時間',
+            data: [2, 4, 1, 5, 3],  // データ
+            borderWidth: 2,
+            tension: 0.4  // ←滑らか
+        }]
+    },
+    options: {
+        responsive: false  // ←これ入れる
+    }
+});*/
+const edges = [];
+
+function updateLines() {
+
+    const svg = document.getElementById("lineLayer");
+
+    svg.innerHTML = "";
+
+    edges.forEach(edge => {
+
+        const fromRect = edge.from.getBoundingClientRect();
+        const toRect = edge.to.getBoundingClientRect();
+
+        // 中心座標
+        const cx1 =
+            fromRect.left + fromRect.width / 2 + window.scrollX;
+
+        const cy1 =
+            fromRect.top + fromRect.height / 2 + window.scrollY;
+
+        const cx2 =
+            toRect.left + toRect.width / 2 + window.scrollX;
+
+        const cy2 =
+            toRect.top + toRect.height / 2 + window.scrollY;
+
+        // 方向ベクトル
+        const dx = cx2 - cx1;
+        const dy = cy2 - cy1;
+
+        // 距離
+        const dist = Math.hypot(dx, dy);
+
+        // 単位ベクトル
+        const ux = dx / dist;
+        const uy = dy / dist;
+
+        // 楕円の半径
+        const rx1 = fromRect.width / 2;
+        const ry1 = fromRect.height / 2;
+
+        const rx2 = toRect.width / 2;
+        const ry2 = toRect.height / 2;
+
+        // 楕円境界までの倍率
+        const t1 =
+            1 / Math.sqrt(
+                (ux * ux) / (rx1 * rx1) +
+                (uy * uy) / (ry1 * ry1)
+            );
+
+        const t2 =
+            1 / Math.sqrt(
+                (ux * ux) / (rx2 * rx2) +
+                (uy * uy) / (ry2 * ry2)
+            );
+
+        // 楕円の外周座標
+        const x1 = cx1 + ux * t1;
+        const y1 = cy1 + uy * t1;
+
+        const x2 = cx2 - ux * t2;
+        const y2 = cy2 - uy * t2;
+
+        // SVG line生成
+        const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line"
+        );
+
+        line.setAttribute("x1", x1);
+        line.setAttribute("y1", y1);
+
+        line.setAttribute("x2", x2);
+        line.setAttribute("y2", y2);
+
+        line.setAttribute("stroke", "black");
+        line.setAttribute("stroke-width", "3");
+
+        svg.appendChild(line);
+    });
+}
+document.querySelectorAll(".circle").forEach(el => {
+
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  el.addEventListener("mousedown", (e) => {
+    if (window.getSelection().toString()) return;
+    document.querySelectorAll(".circle").forEach(c => {
+    c.classList.remove("selected");
+  });
+  el.classList.add("selected");
+    isDragging = true;
+    offsetX = e.pageX - el.offsetLeft;
+    offsetY = e.pageY - el.offsetTop;
+
+    el.style.cursor = "grabbing";
+    // いったん全解除
+   
+
+    // 今のやつを選択
+    el.classList.add("selected");
+  });
+  
+  document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+
+  const x = e.pageX;
+  const y = e.pageY;
+
+  // ドラッグ移動
+  el.style.left = (x - offsetX) + "px";
+  el.style.top = (y - offsetY) + "px";
+  updateLines();
+  // ===== ここから自動拡張 =====
+
+  const margin = 1; // 端判定
+
+  // 右端
+  if (x > window.innerWidth - margin) {
+    document.body.style.width =
+      document.body.offsetWidth + 100 + "px";
+  }
+
+  // 下端
+  if (y > window.innerHeight - margin) {
+    document.body.style.height =
+      document.body.offsetHeight + 1 + "px";
+  }
+
+  // 左端
+  if (x < margin) {
+    window.scrollBy(20, 0);
+  }
+
+  // 上端
+  if (y < margin) {
+    window.scrollBy(0, 20);
+  }
+
+  // 自動スクロール
+  if (x > window.innerWidth - margin) {
+    window.scrollBy(20, 0);
+  }
+
+  if (y > window.innerHeight - margin) {
+    window.scrollBy(0, 20);
+  }
+});
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    el.style.cursor = "grab";
+  });
+
+});
+document.addEventListener("dblclick", (e) => {
+  
+
+  const newCircle = document.createElement("div");
+
+  newCircle.className = "circle";
+  newCircle.contentEditable = "true";
+  newCircle.textContent = "文字を入力";
+
+  // クリックした位置に出す
+  newCircle.style.position = "absolute";
+  newCircle.style.left = e.pageX + "px";
+  newCircle.style.top = e.pageY + "px";
+  document.body.appendChild(newCircle);
+  makeDraggable(newCircle);
+  if (selectedCircle) {
+    edges.push({ from: selectedCircle, to: newCircle });
+   
+  }
+  
+  // ドラッグできるようにする
+  makeDraggable(newCircle);
+  
+    updateLines();
+  
+});
+
+let selectedCircle = null;
+function makeDraggable(el) {
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  el.addEventListener("mousedown", (e) => {
+    if (window.getSelection().toString()) return;
+   document.querySelectorAll(".circle").forEach(c => c.classList.remove("selected"));
+    el.classList.add("selected");
+     selectedCircle = el; 
+    isDragging = true;
+    offsetX = e.pageX - el.offsetLeft;
+    offsetY = e.pageY - el.offsetTop;
+
+    el.style.cursor = "grabbing";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    el.style.left = (e.pageX - offsetX) + "px";
+    el.style.top = (e.pageY - offsetY) + "px";
+    updateLines();
+  });
+
+  document.addEventListener("mouseup", () => {
+    isDragging = false;
+    el.style.cursor = "grab";
+  });
+}
+document.addEventListener("mousedown", (e) => {
+    if (e.clientY <= 100) return;
+if (e.target.closest(".circle")) return;
+if (e.target.closest("#colorpicker")) return;
+
+  if (!e.target.classList.contains("circle")) {
+    document.querySelectorAll(".circle").forEach(c => {
+      c.classList.remove("selected");
+    });
+  }
+});
+window.addEventListener("scroll", updateLines);
+</script>
+</body>
+</html>
