@@ -68,11 +68,7 @@
   
         z-index: 7;
     }
-    .main{
-        position:relative;
-        height:calc(100vh - 80px);
-        overflow:auto;
-    }
+    
     #lineLayer{
         position: absolute;
         left: 0;
@@ -141,12 +137,12 @@
 
     border-radius: 50%;
     background-color: #f3f3f3;
-    border: 2px solid #333;
+    border: 1px solid #333;
 
     padding: 20px;
 
     box-sizing: border-box;
-
+    box-shadow: 5px 5px 10px black;
     overflow-wrap: break-word;
 
     white-space: pre-wrap;
@@ -608,23 +604,7 @@ document.querySelectorAll(".circle").forEach(el => {
   if (y > window.innerHeight - margin) {
     window.scrollBy(0, 20);
   }
-   let rect = main.getBoundingClientRect();
-   let xx = e.clientX - rect.left;
-   let yy = e.clientY - rect.top;
-   if(x<0){
-    x=0;
-   }
-   if(y<0){
-    y=0;
-   }
-   if (x > rect.width - 50){
-    x = rect.width -50;
-   }
-   if (y > rect.height - 50){
-    y = rect.height - 50;
-   }
-   circle.style.left = x + 'px';
-   circle.style.top = y + 'px';
+   
 });
 
   document.addEventListener("mouseup", () => {
