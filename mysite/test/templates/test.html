@@ -29,6 +29,7 @@
   <p class="haikei">背景色</p>
   <p class="maruiro">丸の色</p>
 </div>
+<div .class="main"></div>
 <svg id="lineLayer"></svg>
 <div id="canvas"></div>
     <input id="colorpicker2" type="color" value="#888888">
@@ -66,6 +67,11 @@
         border-bottom: 1px solid #ccc;
   
         z-index: 7;
+    }
+    .main{
+        position:relative;
+        height:calc(100vh - 80px);
+        overflow:auto;
     }
     #lineLayer{
         position: absolute;
@@ -602,6 +608,23 @@ document.querySelectorAll(".circle").forEach(el => {
   if (y > window.innerHeight - margin) {
     window.scrollBy(0, 20);
   }
+   let rect = main.getBoundingClientRect();
+   let xx = e.clientX - rect.left;
+   let yy = e.clientY - rect.top;
+   if(x<0){
+    x=0;
+   }
+   if(y<0){
+    y=0;
+   }
+   if (x > rect.width - 50){
+    x = rect.width -50;
+   }
+   if (y > rect.height - 50){
+    y = rect.height - 50;
+   }
+   circle.style.left = x + 'px';
+   circle.style.top = y + 'px';
 });
 
   document.addEventListener("mouseup", () => {
