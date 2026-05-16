@@ -1,0 +1,219 @@
+
+    body{background-color: whitesmoke;
+        color:#2A2A2A;
+        width: 1000px;
+        height: 600px;
+    }
+    #toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 500px;
+        height: 80px;
+        background-color: #00A0A0;
+        color: whitesmoke;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        
+       
+        border-bottom: 1px solid #ccc;
+  
+        z-index: 7;
+    }
+    
+    #lineLayer{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: visible;
+    }
+    #canvas {
+        margin-top: 80px; /* ツールバー分ずらす */
+    }
+    .sitahaba{
+        position: fixed;
+        font-size: 15px;
+        top: -7px; 
+        left: 200px;
+        color: #666666;
+    }
+    .uehaba{
+        position: fixed;
+        font-size: 15px;
+        top: 13px;
+        left: 200px;
+        color: #666666;
+    }
+    .migihaba{
+        position: fixed;
+        font-size: 15px;
+        top: 33px;
+        left: 200px;
+        color: #666666;
+    }
+    .hidarihaba{
+        position: fixed;
+        font-size: 15px;
+        top: 53px;
+        left: 200px;
+        color: #666666;
+    }
+    .kesu{
+        position: fixed;
+        height: 80px;
+        top: 10px;
+        left: 120px;
+        background-color: #00AAA0; 
+        border: 2px solid whitesmoke;
+        border-radius: 11px;
+    }
+    .haikei{
+        position: fixed;
+        left: 305px;
+        top: 3px;
+        font-size: 15px;
+        color: #666666;
+    }
+    .maruiro{
+        position: fixed;
+        left: 305px;
+        top: 45px;
+        font-size: 15px;
+        color:#666666;
+    }
+    .circle{
+    position: absolute;
+
+    min-width: 120px;
+    min-height: 120px;
+
+    border-radius: 50%;
+    background-color: #f3f3f3;
+    border: 1px solid #333;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+    box-shadow: 5px 5px 10px black;
+    overflow-wrap: break-word;
+
+    white-space: pre-wrap;
+
+    
+
+    
+}
+    .kensaku{border: 1.2px solid #888888; /*枠の線とその色*/
+        background-color: #444444;  /*枠の中の色*/
+        color: whitesmoke;
+        font-size: 16px; /*文字のサイズ*/
+        padding: 6px; /*枠の線と文字の間隔*/
+        width: 700px;/*横幅*/
+        height: 27px;/*縦幅*/
+        position: fixed;
+        z-index: 20;
+        top: 60px;
+        left: 370px;
+        border-radius: 20px;/*バーの角の丸さ*/}
+    .sikaku{
+        background-color: whitesmoke;
+        border:1.2px solid #666666;
+        z-index: 10;
+        position: fixed;
+        top: -20px;
+        left: 0px;
+        height: 100px;
+       width: 1500px;}
+    .msg{z-index: 1;
+        font-size: 20px;
+        width: 1000px;
+        position: absolute;
+        margin-top: 200px;
+        margin-left: 200px;
+        scrollbar-width: thin;
+        scrollbar-color: #666 #222;}
+    .msg::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    .msg::-webkit-scrollbar-track {
+        background: #222222;
+        border-radius: 10px;
+    }
+
+    .msg::-webkit-scrollbar-thumb {
+        background: #666666;
+        border-radius: 10px;
+    }
+    
+    .msg::-webkit-scrollbar-thumb:hover {
+        background: #999999;
+    }
+    .line1{position: fixed;
+        top: 140px;
+        left: 200px;
+        background-color: whitesmoke;
+        height: 2px;
+        width: 1150px;
+        z-index: 11;}
+    .line2{position: fixed;
+    }
+    #myChart{position: relative;
+        left: 200px;}
+    .circle.selected {
+        border: 3px solid #007bff;
+        box-shadow: 0 0 10px rgba(0,123,255,0.6);
+    }
+
+
+    #colorpicker{position: fixed; top: 10px; left: 355px;
+        height: 40px;}
+    #colorpicker2{position: fixed; 
+        height: 40px;
+        top: 50px;
+        left: 355px;
+        z-index: 10;
+        }
+    .sitahiroku{
+        position:fixed;
+        top: 10px;
+        left: 240px;
+    }
+    .sitasemaku{ position: fixed;
+        top: 10px;
+        left: 270px;}
+    .migihiroku{
+        position: fixed;
+        top: 50px;
+        left: 240px;
+    }
+    .migisemaku{
+        position: fixed;
+        top: 50px;
+        left: 270px;
+    }
+    .uehiroku{
+        position: fixed;
+        top: 30px;
+        left: 240px;
+    }
+    .uesemaku{
+        position: fixed;
+        top: 30px;
+        left: 270px;
+    }
+    .hidarihiroku{
+        position: fixed;
+        top: 70px;
+        left: 240px;
+    }
+    .hidarisemaku{
+        position: fixed;
+        top: 70px;
+        left: 270px;
+    }
