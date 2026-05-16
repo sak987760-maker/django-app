@@ -22,7 +22,7 @@
   <button class="hidarihiroku" onclick="hidarihiro()">+</button>
   <button class="hidarisemaku" onclick="hidarisema()">-</button>
   <button class="kesu" onclick="kesu()">丸を消す</button>
-  <button class="hosi" onclick="hosi()">☆</button>
+  <!--<button class="hosi" onclick="hosi()">☆</button>-->
   
   <input id="colorpicker" type="color" value="#888888">
   <p class="sitahaba">下幅</p>
@@ -66,9 +66,9 @@
         align-items: center;
         gap: 10px;
         padding: 10px;
-        
+        box-shadow: 5px 5px 10px #444444;
        
-        border-bottom: 1px solid #ccc;
+        border: 1px solid #ccc;
   
         z-index: 7;
     }
@@ -149,7 +149,7 @@
     padding: 20px;
 
     box-sizing: border-box;
-    box-shadow: 5px 5px 10px black;
+    box-shadow: 5px 5px 10px #444444;
     overflow-wrap: break-word;
 
     white-space: pre-wrap;
