@@ -13,15 +13,15 @@
 </form>
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div id="toolbar">
-  <form method="POST"  action="/save/">
-    {% csrf_token %}
-
-    <input type="text" name="text">
-   <ul>
+        <ul>
   {% for item in items %}
     <li class="moji">{{ item.text }}</li>
   {% endfor %}
 </ul>
+  <form method="POST"  action="/save/">
+    {% csrf_token %}
+
+    <input type="text" name="text">
     <button class="hozon">保存</button>
   <button  class="sitahiroku"   onclick="sitahiro()">+</button>
   <button  class="sitasemaku" onclick="sitasema()">-</button>
