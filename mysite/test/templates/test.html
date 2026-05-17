@@ -19,7 +19,7 @@
     <input type="text" name="text">
    <ul>
   {% for item in items %}
-    <li>{{ item.text }}</li>
+    <li class="moji">{{ item.text }}</li>
   {% endfor %}
 </ul>
     <button class="hozon">保存</button>
@@ -82,7 +82,9 @@
   
         z-index: 7;
     }
-    
+    .moji{
+        background-color: #222;
+    }
     #lineLayer{
         position: absolute;
         left: 0;
