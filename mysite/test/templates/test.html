@@ -17,7 +17,11 @@
     {% csrf_token %}
 
     <input type="text" name="text">
-
+   <ul>
+  {% for item in items %}
+    <li>{{ item.text }}</li>
+  {% endfor %}
+</ul>
     <button class="hozon">保存</button>
   <button  class="sitahiroku"   onclick="sitahiro()">+</button>
   <button  class="sitasemaku" onclick="sitasema()">-</button>
