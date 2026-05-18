@@ -7,6 +7,7 @@
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
+    
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div id="toolbar">
         <ul>
@@ -14,6 +15,9 @@
     <li class="moji">{{ item.text }}</li>
   {% endfor %}
 </ul>
+<a href="/delete/">
+  <button>全部削除</button>
+</a>
   <form method="POST"  action="/save/">
     {% csrf_token %}
 
