@@ -7,14 +7,13 @@
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
-    
-    <p class="msg">{{ msg|linebreaksbr }}</p>
-    <div id="toolbar">
-        <ul>
+     <ul>
   {% for item in items %}
     <li class="moji">{{ item.text }}</li>
   {% endfor %}
 </ul>
+    <p class="msg">{{ msg|linebreaksbr }}</p>
+    <div id="toolbar">
 <a href="/delete/">
   <button>全部削除</button>
 </a>
