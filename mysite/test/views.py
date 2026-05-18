@@ -11,7 +11,7 @@ def home(request):
         text = request.POST.get("text")
         Ternal.objects.create(text=text)
     
-    items = Ternal.objects.all()
+    items = Ternal.objects.all().order_by('id')
     return render(request, "test.html", {"items": items})
 
 
@@ -20,5 +20,5 @@ def save_memo(request):
         text = request.POST.get("text")
         Ternal.objects.create(text=text)
     
-    items = Ternal.objects.all()
+    items = Ternal.objects.all().order_by('id')
     return render(request, "test.html", {"items": items})
