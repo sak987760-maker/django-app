@@ -22,3 +22,6 @@ def save_memo(request):
     
     items = Ternal.objects.all().order_by('-id')
     return render(request, "test.html", {"items": items})
+def delete_all(request):
+    Ternal.objects.all().delete()
+    return render(request, "test.html", {"items": []})

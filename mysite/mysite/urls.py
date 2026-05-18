@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from test.views import home, save_memo
-
+from test.views import home, save_memo, delete_all
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home),
     path("save/", save_memo),
+    path("delete/", delete_all),
 ]
