@@ -10,7 +10,7 @@
         left: 0;
         width: 500px;
         height: 80px;
-        background-color: #00A0A0;
+        
         color: whitesmoke;
         display: flex;
         align-items: center;
@@ -18,11 +18,13 @@
         padding: 10px;
         box-shadow: 5px 5px 10px #444444;
        
-        border: 1px solid #ccc;
+        border: 1px solid #2A2A2A;
   
         z-index: 7;
     }
     .moji{
+        position: fixed;
+        top: 50px;
         color: #222;
     }
    
