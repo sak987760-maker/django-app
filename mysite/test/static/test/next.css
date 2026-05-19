@@ -27,7 +27,7 @@
     }
     textarea{
         position: fixed;
-        top: -10px;
+        top: 2px;
         width: 600px; 
         padding: 3px;
         font-size: 16px;
