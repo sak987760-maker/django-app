@@ -27,7 +27,8 @@
     }
     textarea{
         position: fixed;
-        top: 2px;
+        top: 10px;
+        left: 200px;
         width: 800px; 
         padding: 3px;
         font-size: 16px;
@@ -37,6 +38,6 @@
     }
     .hozon{
         position: fixed;
-        left: 1000px;
+        left: 1200px;
     }
    
