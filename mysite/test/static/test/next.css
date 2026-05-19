@@ -22,7 +22,11 @@
         z-index: 7;
     }
     .moji{
-        color: #222;
+        color: #222;  /*投稿の文字*/
         top: 200px;
+    }
+    .nyuuryoku{
+        position: fixed;
+        width: 400px;
     }
    
