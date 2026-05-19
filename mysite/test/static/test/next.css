@@ -25,12 +25,12 @@
         color: #222;  /*投稿の文字*/
         top: 200px;
     }
-    .nyuuryoku{
+    textarea{
         position: fixed;
         width: 400px; 
         font-size: 16px;
         overflow-y: auto;
-        max-height: 72px;
+        max-height: 90px;
         resize: none;
     }
     .hozon{
