@@ -28,7 +28,7 @@
     textarea{
         position: fixed;
         top: 2px;
-        width: 1000px; 
+        width: 800px; 
         padding: 3px;
         font-size: 16px;
         overflow-y: auto;
@@ -37,6 +37,6 @@
     }
     .hozon{
         position: fixed;
-        left: 750px;
+        left: 1000px;
     }
    
