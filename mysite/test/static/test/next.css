@@ -27,8 +27,9 @@
     }
     textarea{
         position: fixed;
-        width: 400px; 
-        height: 18px;
+        top: -20px;
+        width: 600px; 
+        padding: 3px;
         font-size: 16px;
         overflow-y: auto;
         max-height: 90px;
