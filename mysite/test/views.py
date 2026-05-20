@@ -8,6 +8,8 @@ def home(request):
         Ternal.objects.create(text=text)
         return redirect('/')
     items = Ternal.objects.all().order_by('-id')
+    for item in items:
+        item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
 
 
@@ -17,6 +19,8 @@ def save_memo(request):
         Ternal.objects.create(text=text)
         return redirect('/')
     items = Ternal.objects.all().order_by('-id')
+    for item in items:
+        item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
 
 
@@ -27,5 +31,3 @@ def delete_all(request):
 def linkify(text):
     return re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
 items = Ternal.objects.all().order_by('id')
-for item in items:
-    item.text = linkify(item.text)
