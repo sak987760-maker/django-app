@@ -7,6 +7,7 @@
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
+    <li class="moji">{{ item.text|safe }}</li>
      <ul>
   {% for item in items %}
     <li class="moji">{{ item.text }}</li>

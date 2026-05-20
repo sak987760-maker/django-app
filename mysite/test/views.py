@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Ternal
-
+import re
 
 def home(request):
     if request.method == "POST":
@@ -23,3 +23,9 @@ def save_memo(request):
 def delete_all(request):
     Ternal.objects.all().delete()
     return redirect('/')
+
+def linkify(text):
+    return re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
+items = Ternal.objects.all().order_by('id')
+for item in items:
+    item.text = linkify(item.text)
