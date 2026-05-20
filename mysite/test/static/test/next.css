@@ -23,7 +23,7 @@
     }
     .moji{
         color: #222;  /*投稿の文字*/
-        top: 200px;
+        margin-top: 300px;
     }
     textarea{
         position: fixed;
