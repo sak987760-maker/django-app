@@ -30,4 +30,3 @@ def delete_all(request):
 
 def linkify(text):
     return re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
-items = Ternal.objects.all().order_by('id')
