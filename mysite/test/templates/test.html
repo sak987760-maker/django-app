@@ -9,7 +9,7 @@
 <body>
      <ul>
   {% for item in items %}
-    <li class="moji">{{ item.text|safe }}</li>
+    <li class="moji"><span class="mark">★</span>{{ item.text|safe }}</li>
   {% endfor %}
 </ul>
     <p class="msg">{{ msg|linebreaksbr }}</p>
