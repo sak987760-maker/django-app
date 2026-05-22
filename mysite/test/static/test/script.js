@@ -7,4 +7,7 @@ const text = textarea.value;
 const hozon = document.querySelector('.hozon');
 if (text === '') {
     hozon.disabled = true;
+}
+else {
+    hozon.disabled = false;
 };
