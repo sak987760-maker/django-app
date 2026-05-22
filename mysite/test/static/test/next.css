@@ -55,3 +55,10 @@
     padding: 5px;
     font-size: 15px;
    }
+   .waku{
+    background-color: #555555;
+    border: 1px solid#2A2A2A;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+   }
