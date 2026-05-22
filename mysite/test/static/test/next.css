@@ -36,7 +36,6 @@
         overflow-y: auto;
         max-height: 72px;
         resize: none;
-        height: 18px;
     }
     .hozon{
         position: fixed;
@@ -53,4 +52,5 @@
    .mark{
     padding: 5px;
     font-size: 15px;
+    vertical-align: middle;
    }
