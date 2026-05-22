@@ -24,6 +24,7 @@
     .moji{
         color: #222;  /*投稿の文字*/
         top: 130px;
+        font-size: 20px;
     }
     textarea{
         position: fixed;
