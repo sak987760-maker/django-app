@@ -36,6 +36,7 @@
         overflow-y: auto;
         max-height: 72px;
         resize: none;
+        height: 18px;
     }
     .hozon{
         position: fixed;
