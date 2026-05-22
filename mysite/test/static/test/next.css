@@ -25,6 +25,8 @@
         color: #222;  /*投稿の文字*/
         top: 130px;
         font-size: 20px;
+        display: flex;
+        align-items: center;
     }
     textarea{
         position: fixed;
@@ -52,5 +54,4 @@
    .mark{
     padding: 5px;
     font-size: 15px;
-    vertical-align: middle;
    }
