@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Ternal
+from .forms import UserIconForm  # 追加
 import re
 
 def home(request):
@@ -26,6 +27,14 @@ def save_memo(request):
 
 def delete_all(request):
     Ternal.objects.all().delete()
+    return redirect('/')
+
+def update_icon(request):  # 追加
+    if request.method == "POST":
+        form = UserIconForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
     return redirect('/')
 
 def linkify(text):
