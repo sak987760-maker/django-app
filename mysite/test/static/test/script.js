@@ -13,3 +13,13 @@ textarea.addEventListener('input', function() {
         hozon.disabled = false;
     }
 });
+document.getElementById('iconInput').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+  
+  reader.onload = function(e) {
+    document.getElementById('iconPreview').src = e.target.result;
+  };
+  
+  reader.readAsDataURL(file);
+});
