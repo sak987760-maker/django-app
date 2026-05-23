@@ -65,3 +65,9 @@
     padding: 12px 16px;
     margin-bottom: 8px;
    }
+   .tagu{
+    position: relative;
+    top: -50px;
+    left: 500px;
+    font-size: 130px;
+   }
