@@ -1,8 +1,33 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import get_user_model
+from django import forms
 from .models import Ternal
 import re
+
+User = get_user_model()
+
+class SignupForm(forms.ModelForm):
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get('password1') != cleaned_data.get('password2'):
+            raise forms.ValidationError('パスワードが一致しません')
+        return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password1'])
+        if commit:
+            user.save()
+        return user
 
 def home(request):
     if request.method == "POST":
@@ -30,13 +55,13 @@ def delete_all(request):
 
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('/')
     else:
-        form = UserCreationForm()
+        form = SignupForm()
     return render(request, "signup.html", {"form": form})
 
 def login_view(request):
