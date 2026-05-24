@@ -75,7 +75,7 @@
     position: relative;
     width: 1300px;
     height: 200px;
-    left: 0px;
+    left: -10px;
     object-fit: cover;
     cursor: pointer;     /* クリックできる見た目に */
    }
