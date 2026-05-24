@@ -81,3 +81,8 @@ def logout_view(request):
 
 def linkify(text):
     return re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
+def update_icon(request):
+    if request.method == "POST" and request.FILES.get('icon'):
+        request.user.icon = request.FILES['icon']
+        request.user.save()
+    return redirect('/')
