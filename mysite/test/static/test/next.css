@@ -73,9 +73,10 @@
    }
    #iconPreview {
     position: relative;
-    width: 1300px;
+    width: 1250px;
     height: 200px;
     left: -12px;
+    top: 300px;
     object-fit: cover;
     cursor: pointer;     
     z-index: 3;
