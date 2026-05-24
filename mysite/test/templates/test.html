@@ -13,15 +13,16 @@
     <li class="moji"><div class="waku"><span class="mark">★</span>{{ item.text|safe }}</div></li>
   {% endfor %}
 </ul>
-    <p class="msg">{{ msg|linebreaksbr }}</p>
-    <div id="toolbar">
-        <form method="post" action="/update_icon/" enctype="multipart/form-data">
+    <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="iconInput" >
     <img id="iconPreview" src="{% static 'default_icon.png' %}" alt="アイコン">
   </label>
   <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
 </form>
+    <p class="msg">{{ msg|linebreaksbr }}</p>
+    <div id="toolbar">
+        
 <a href="/delete/">
   <button>全部削除</button>
 </a>
