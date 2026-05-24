@@ -3,6 +3,8 @@
         color:#2A2A2A;
         width: 1000px;
         height: 600px;
+        margin: 0;
+        padding: 0;
     }
     #toolbar {
         position: fixed;
