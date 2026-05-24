@@ -7,12 +7,6 @@
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
-     <ul>
-  {% for item in items %}
-  <div>
-    <li class="moji"><div class="waku"><span class="mark">★</span>{{ item.text|safe }}</div></li>
-  {% endfor %}
-</ul>
     <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="iconInput" >
@@ -20,6 +14,12 @@
   </label>
   <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
 </form>
+     <ul>
+  {% for item in items %}
+  <div>
+    <li class="moji"><div class="waku"><span class="mark">★</span>{{ item.text|safe }}</div></li>
+  {% endfor %}
+</ul>
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div id="toolbar">
         
