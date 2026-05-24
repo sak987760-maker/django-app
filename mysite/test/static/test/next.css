@@ -72,12 +72,12 @@
     font-size: 130px;
    }
    #iconPreview {
-    width: 100%;
+    width: 500px;
     height: 200px;
     object-fit: cover;
     cursor: pointer;     /* クリックできる見た目に */
    }
    .icon-label {
     display: block;
-    width: 100%;
+    width: 500px;
    }
