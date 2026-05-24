@@ -48,7 +48,8 @@
         top: 30px;
     }
     ul {
-    margin-top: 100px;  /* 好きな値に */
+    position: fixed;
+    top: 100px;  /* 好きな値に */
     list-style: none;
     }
    .mark{
