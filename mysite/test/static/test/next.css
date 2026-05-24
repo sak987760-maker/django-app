@@ -30,7 +30,7 @@
     }
     textarea{
         position: fixed;
-        top: 450px;
+        top: 470px;
         left: 250px;
         width: 800px; 
         padding: 3px;
@@ -45,7 +45,7 @@
         height: 50px;
         font-size: 30px;
         left: 1070px;
-        top: 450px;
+        top: 490px;
     }
     ul {
     top: 100px;  /* 好きな値に */
