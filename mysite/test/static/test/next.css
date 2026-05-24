@@ -77,3 +77,7 @@
     object-fit: cover;
     cursor: pointer;     /* クリックできる見た目に */
    }
+   .icon-label {
+    display: block;
+    width: 100%;
+   }
