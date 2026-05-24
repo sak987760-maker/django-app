@@ -30,6 +30,8 @@ class SignupForm(forms.ModelForm):
         return user
 
 def home(request):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
     if request.method == "POST":
         text = request.POST.get("text")
         Ternal.objects.create(text=text, user=request.user)
