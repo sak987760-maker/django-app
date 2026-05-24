@@ -74,8 +74,8 @@
    #iconPreview {
     width: 1270px;
     height: 300px;
-    left: -12px;
-    top: 300px;
+    left: -11px;
+    top: 600px;
     object-fit: cover;
     cursor: pointer;     
     z-index: 3;
