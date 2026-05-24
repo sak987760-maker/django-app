@@ -32,9 +32,9 @@ class SignupForm(forms.ModelForm):
 def home(request):
     if request.method == "POST":
         text = request.POST.get("text")
-        Ternal.objects.create(text=text)
+        Ternal.objects.create(text=text, user=request.user)
         return redirect('/')
-    items = Ternal.objects.all().order_by('-id')
+    items = Ternal.objects.filter(user=request.user).order_by('-id')
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
@@ -42,9 +42,9 @@ def home(request):
 def save_memo(request):
     if request.method == "POST":
         text = request.POST.get("text")
-        Ternal.objects.create(text=text)
+        Ternal.objects.create(text=text, user=request.user)
         return redirect('/')
-    items = Ternal.objects.all().order_by('-id')
+    items = Ternal.objects.filter(user=request.user).order_by('-id')
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
