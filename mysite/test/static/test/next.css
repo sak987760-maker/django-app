@@ -72,8 +72,10 @@
     font-size: 130px;
    }
    #iconPreview {
-    width: 1500px;
+    position: relative;
+    width: 1300px;
     height: 200px;
+    left: 0px;
     object-fit: cover;
     cursor: pointer;     /* クリックできる見た目に */
    }
