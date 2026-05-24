@@ -17,7 +17,7 @@
     <div id="toolbar">
         <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
-  <label for="iconInput" class="icon-label">
+  <label for="iconInput" >
     <img id="iconPreview" src="{% static 'default_icon.png' %}" alt="アイコン">
   </label>
   <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
