@@ -83,4 +83,12 @@
     cursor: pointer;     
     z-index: 3;
    }
-  
+  #iconImage {
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}

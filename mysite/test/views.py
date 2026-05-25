@@ -63,6 +63,9 @@ def signup(request):
             if request.FILES.get('header'):
                 user.header = request.FILES['header']
                 user.save()
+            if request.FILES.get('icon'):
+                user.icon = request.FILES['icon']
+                user.save()
             login(request, user)
             return redirect('/')
     else:
