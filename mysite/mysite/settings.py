@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 import os
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-temporarykey12345'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['django-app-y0ee.onrender.com', 'localhost', '127.0.0.1']
 
@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'test',
 ]
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dsi83c3ni',
-    'API_KEY': '846557233914513',
-    'API_SECRET': 'pZ3XgR-tZfxJANPwPXHlQEWJmco',
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 AUTH_USER_MODEL = 'test.User'
