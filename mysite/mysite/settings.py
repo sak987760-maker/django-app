@@ -46,8 +46,8 @@ INSTALLED_APPS = [
 ]
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dsi83c3ni',
-    'API_KEY': '846557233914513',
-    'API_SECRET': 'pZ3XgR-tZfxJA',
+    'API_KEY': '449341221874375',
+    'API_SECRET': '_yGiIzO0ELI6P3bwmMZnxysIvZM',
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 AUTH_USER_MODEL = 'test.User'
