@@ -7,11 +7,11 @@
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
+    
     <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="iconInput" >
     <img id="iconPreview" src="{% if request.user.header %}{{ request.user.header.url }}{% else %}{% static 'test/default_icon.png' %}{% endif %}" alt="ヘッダー">
-     <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));"></div>
   </label>
   <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
 </form>
@@ -25,6 +25,7 @@
   {% endfor %}
 </ul>
     <p class="msg">{{ msg|linebreaksbr }}</p>
+    <div class="headshadow"></div>
     <div id="toolbar">
         
 <a href="/delete/">
