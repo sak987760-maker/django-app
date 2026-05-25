@@ -91,4 +91,5 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: inset 0 -5px 5px rgba(0,0,0,0.3);
 }
