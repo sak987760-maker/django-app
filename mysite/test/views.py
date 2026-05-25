@@ -57,9 +57,12 @@ def delete_all(request):
 
 def signup(request):
     if request.method == "POST":
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
+            if request.FILES.get('header'):
+                user.header = request.FILES['header']
+                user.save()
             login(request, user)
             return redirect('/')
     else:

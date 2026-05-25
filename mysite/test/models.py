@@ -8,6 +8,7 @@ class User(AbstractUser):
         blank=True,
         null=True,
     )
+    header = models.ImageField(upload_to='headers/', blank=True, null=True)
 
 class Ternal(models.Model):
     text = models.TextField(max_length=5000)

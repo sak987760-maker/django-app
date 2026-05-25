@@ -10,7 +10,7 @@
     <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="iconInput" >
-    <img id="iconPreview" src="{% static 'default_icon.png' %}" alt="アイコン">
+    <img id="iconPreview" src="{% if request.user.header %}{{ request.user.header.url }}{% else %}{% static 'test/default_icon.png' %}{% endif %}" alt="ヘッダー">
   </label>
   <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
 </form>

@@ -6,11 +6,13 @@
     <title>YAMABIKO 新規登録</title>
 </head>
 <body>
+    
     <h1>新規登録</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">登録</button>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="file" name="header" accept="image/*">
+    <button type="submit">登録</button>
     </form>
     <a href="/login/">ログインはこちら</a>
 </body>
