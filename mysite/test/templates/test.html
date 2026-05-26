@@ -24,7 +24,8 @@
     <li class="moji"><div class="waku"><span class="mark">★</span>{{ item.text|safe }}</div></li>
   {% endfor %}
 </ul>
-    {{ request.user.username }}
+    <p class="name">{{ person.name }}</p>
+    <!--<p class="username">{{ request.user.username }}</p>-->
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div class="headshadow"></div>
     <div id="toolbar">
