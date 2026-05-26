@@ -59,7 +59,10 @@ def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
+            name = request.POST["name"]
             user = form.save()
+            user.name = name
+            user.save()
             if request.FILES.get('header'):
                 user.header = request.FILES['header']
                 user.save()

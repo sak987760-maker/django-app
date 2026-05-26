@@ -101,3 +101,8 @@
     height: 40px; 
     background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
 }
+.name{
+    position: fixed;
+    top: 120px;
+    left: 30;
+}

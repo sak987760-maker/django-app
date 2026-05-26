@@ -13,3 +13,6 @@ class User(AbstractUser):
 class Ternal(models.Model):
     text = models.TextField(max_length=5000)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+
+class Person(models.Model):
+    name = models.CharField(max_length=100)
