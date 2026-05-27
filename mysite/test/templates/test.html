@@ -17,11 +17,11 @@
 </form>
 <div class="headshadow"></div>
     <p class="name">{{ request.user.name }}</p>
-<div class="sidewaku">
+
 {% if request.user.icon %}
     <img id="iconImage" src="{{ request.user.icon.url }}" alt="アイコン">
 {% endif %}
-</div>
+<!--<div class="sidewaku"></div>-->
      <ul>
   {% for item in items %}
   <div>
