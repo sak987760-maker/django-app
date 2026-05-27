@@ -39,7 +39,9 @@
         font-size: 16px;
         overflow-y: auto;
         max-height: 72px;
-        resize: none;
+        resize: none; 
+        background-color: #9a9a9a;
+        border-radius: 45px;
     }
     .hozon{
         position: fixed;
