@@ -42,16 +42,18 @@
         resize: none; 
         background-color: #dddddd;
         border-radius: 5px;
+        border: 0px;
     }
     .hozon{
         position: fixed;
-        width: 50px;
+        width: 40px;
         background-color: #2A2A2A;
         color: whitesmoke;
-        height: 50px;
+        height: 40px;
         font-size: 30px;
         left: 1070px;
         top: 520px;
+        border-radius: 50px;
     }
     ul {
     position: relative;

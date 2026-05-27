@@ -31,15 +31,13 @@
     <!--<p class="username">{{ request.user.username }}</p>-->
     <p class="msg">{{ msg|linebreaksbr }}</p>
     
-    <div id="toolbar">
 <a href="/delete/">
   <button>全部削除</button>
 </a>
   <form method="POST"  action="/save/">
     {% csrf_token %}
 
-    <textarea type="text" name="text"  cols="30" maxlength="5000"></textarea>
-    <button class="hozon">>></button>
+    <textarea type="text" name="text"  cols="30" maxlength="5000"><button class="hozon">>></button></textarea>
   </form>
 
 <script src="{% static 'test/script.js' %}"></script>
