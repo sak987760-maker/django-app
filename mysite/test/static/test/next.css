@@ -50,8 +50,9 @@
         top: 520px;
     }
     ul {
-    left: 200px;
-    top: 100px;  /* 好きな値に */
+    position: relative;
+    left: 150px;
+    top: 10px;  /* 好きな値に */
     list-style: none;
     }
    .mark{
@@ -93,17 +94,21 @@
     border-radius: 50%;
     object-fit: cover;
     
-}
-.headshadow{
-    position: fixed;
+    }
+   .headshadow{
+    position: absolute;
     top: 160px;
     width: 100%;
     height: 40px; 
     background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
-}
-.name{
-    position: fixed;
-    top: 300px;
-    left: 30px;
+    z-index: 70;
+    }
+   .name{
+    position: absolute;
+    top: 55px;
+    color: whitesmoke;
+    font-size: 60px;
+    right: 30px;
     z-index: 100;
-}
+    font-weight: 700; /* 100〜900 */
+    }

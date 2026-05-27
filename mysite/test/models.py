@@ -9,8 +9,8 @@ class User(AbstractUser):
         null=True,
     )
     header = models.ImageField(upload_to='headers/', blank=True, null=True)
-
+    name = models.CharField(max_length=100, blank=True)
 class Ternal(models.Model):
     text = models.TextField(max_length=5000)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=100, blank=True)
+    
