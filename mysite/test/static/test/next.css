@@ -41,7 +41,7 @@
         max-height: 90px;
         resize: none; 
         background-color: #9a9a9a;
-        border-radius: 45px;
+        border-radius: 5px;
     }
     .hozon{
         position: fixed;
