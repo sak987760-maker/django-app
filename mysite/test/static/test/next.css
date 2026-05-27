@@ -52,7 +52,7 @@
     ul {
     position: relative;
     left: 150px;
-    top: 10px;  /* 好きな値に */
+    top: 10px;  
     list-style: none;
     }
    .mark{
@@ -95,6 +95,11 @@
     object-fit: cover;
     
     }
+   .sidewaku{
+    width: 100px;
+    height: 200px;
+    border: 1px solid #222;
+   }
    .headshadow{
     position: absolute;
     top: 160px;
