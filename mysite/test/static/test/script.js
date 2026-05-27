@@ -5,7 +5,7 @@ hozon.disabled = true;  // 最初は無効
 
 textarea.addEventListener('input', function() {
     this.style.height = 'auto';
-    this.style.height = Math.min(this.scrollHeight, 72) + 'px';
+    this.style.height = Math.min(this.scrollHeight, 90) + 'px';
     
     if (this.value === '') {
         hozon.disabled = true;
