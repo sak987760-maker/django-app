@@ -106,7 +106,7 @@
     }
    .name{
     position: absolute;
-    top: -10px;
+    top: 0px;
     color: whitesmoke;
     font-size: 80px;
     right: 30px;
