@@ -36,10 +36,9 @@
 </a>
   <form method="POST"  action="/save/">
     {% csrf_token %}
-
+    <button class="hozon">>></button>
     <textarea type="text" name="text"  cols="30" maxlength="5000"></textarea>
   </form>
-  <button class="hozon">>></button>
 <script src="{% static 'test/script.js' %}"></script>
 </body>
 </html>
