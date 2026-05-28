@@ -138,10 +138,20 @@
     text-align: center;
     }
    .nickname{
-    position: relative;
-    top: 30px;
+    position: fixed;
+    top: 410px;
+    right: 616px;
+    height: 30px;
+    width: 300px;
+    border-radius: 2px;
+    font-size: 20px;
    }
-
+   .nick{
+    position: fixed;
+    top: 391px;
+    left: 230px;
+    font-size: 20px;
+   }
    form input[type="text"]:not(.nickname){
     position: relative;
     left: 20px;
@@ -152,7 +162,7 @@
    }
    .heddaa{
     position: relative;
-    top: 50px;
+    top: 100px;
    }
    .touro{
     position: fixed;
@@ -201,10 +211,15 @@
     left: 124px;
     top: 0px;
     width: 300px;
+    font-size: 20px;
    }
    .kotira{
     position: fixed;
     top: 575px;
     left: 530px;
     font-size: 25px;
+   }
+   .aikon{
+    position: relative;
+    top: 100px;
    }
