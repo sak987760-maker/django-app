@@ -116,3 +116,95 @@
     z-index: 100;
     font-weight: 700; /* 100〜900 */
     }
+    /*signup css*/
+    .taitoru{
+    position: fixed;
+    left: 350px;
+    top: -130px;
+    font-size: 120px;
+    }
+    .upwaku{
+    position: relative;
+    left: 215px;
+    top: 150px;
+    width: 810px;
+    height: 400px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    border: 0px solid#2A2A2A;
+    border-radius: 20px;
+    }
+    .sinki{
+    position: relative; 
+    text-align: center;
+    }
+   .nickname{
+    position: relative;
+    top: 30px;
+   }
+
+   form input[type="text"]:not(.nickname){
+    position: relative;
+    left: 20px;
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+
+   }
+   .heddaa{
+    position: relative;
+    top: 50px;
+   }
+   .touro{
+    position: fixed;
+    top: 500px;
+    right: 320px;
+    width: 180px;
+    height: 60px;
+    font-size: 30px;
+   }
+   .un{
+    position: relative;
+    left: 20px;
+    top: -10px;
+   }
+   .keikoku{
+    position: fixed;
+    left: 670px;
+    top: 235px;
+   }
+   .eraa{
+    position: fixed;
+    top: 245px;
+    left: 149px;
+   }
+   .pw1 label {
+    position: relative;
+    left: 15px;
+    top: 37px;
+}
+   .pw1waku input {
+    position: relative;
+    height: 30px;
+    width: 300px;
+    left: 124px;
+    top: 10px;
+    font-size: 20px;
+   }
+   .pw2 label {
+    position: relative;
+    left: 14px;
+    top: 30px;
+   }
+   .pw2waku input {
+    position: relative;
+    height: 30px;
+    left: 124px;
+    top: 0px;
+    width: 300px;
+   }
+   .kotira{
+    position: fixed;
+    top: 575px;
+    left: 530px;
+    font-size: 25px;
+   }

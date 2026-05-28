@@ -1,21 +1,37 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>YAMABIKO 新規登録</title>
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'test/next.css' %}">
 </head>
 <body>
-    
-    <h1>新規登録</h1>
+    <p class="taitoru">YAMABIKO</p>
+    <div class="upwaku">
+    <h1 class="sinki">新規登録</h1>
     <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="file" name="header" accept="image/*">
+    <div class="un">
+    {{ form.username.label_tag }}
+    {{ form.username }} </div>
+    <div class="keikoku">{{ form.username.help_text }}</div>
+    <div class="eraa">{{ form.username.errors }}</div>
+   
+    <div class="pw1">
+    {{ form.password1.label_tag }}
+    <div class="pw1waku">{{ form.password1 }}</div>
+    </div>
+    <div class="pw2">
+    {{ form.password2.label_tag }}
+    <div class="pw2waku">{{ form.password2 }}</div>
+    </div>
+    <input type="file" name="header" class="heddaa" accept="image/*">
     <input type="file" name="icon" accept="image/*">
-    <input type="text" name="name" style="border:1px solid black;">
-    <button type="submit">登録</button>
+    <input type="text" name="name" class="nickname" style="border:1px solid black;">
+    <button type="submit" class="touro">登録</button>
     </form>
-    <a href="/login/">ログインはこちら</a>
+    <a href="/login/" class="kotira">ログインはこちら</a>
+    </div>
 </body>
 </html>

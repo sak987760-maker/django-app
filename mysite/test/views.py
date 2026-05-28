@@ -9,6 +9,13 @@ import re
 User = get_user_model()
 
 class SignupForm(forms.ModelForm):
+    username = forms.CharField(
+        help_text='150文字以下で入力してください。',
+        error_messages={
+            'required': 'ユーザーネームを入力してください。',
+            'unique': 'このユーザーネームはすでに使われています。',
+        }
+    )
     password1 = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
 
