@@ -8,6 +8,13 @@ import re
 
 User = get_user_model()
 
+def save_comment(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        request.user.comment = data.get('comment')
+        request.user.save()
+    from django.http import JsonResponse
+    return JsonResponse({'status': 'ok'})
 class SignupForm(forms.ModelForm):
     username = forms.CharField(
         help_text='150文字以下で入力してください。',
@@ -21,8 +28,7 @@ class SignupForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username']
-
+        fields = ['username', 'category']  # categoryを追加
     def clean(self):
         cleaned_data = super().clean()
         if cleaned_data.get('password1') != cleaned_data.get('password2'):
@@ -41,7 +47,12 @@ def home(request):
         return redirect('/login/')
     if request.method == "POST":
         text = request.POST.get("text")
-        Ternal.objects.create(text=text, user=request.user)
+        comment = request.POST.get("comment")
+        if comment:
+            request.user.comment = comment
+            request.user.save()
+        if text:
+            Ternal.objects.create(text=text, user=request.user)
         return redirect('/')
     items = Ternal.objects.filter(user=request.user).order_by('-id')
     for item in items:
@@ -57,7 +68,6 @@ def save_memo(request):
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
-
 def delete_all(request):
     Ternal.objects.all().delete()
     return redirect('/')
@@ -104,3 +114,14 @@ def update_icon(request):
         request.user.icon = request.FILES['icon']
         request.user.save()
     return redirect('/')
+from django.db.models import Max
+def home_page(request):
+    users = User.objects.annotate(latest=Max('ternal__created_at')).order_by('-latest')[:20]
+    return render(request, "home.html", {"users": users})
+def user_page(request, user_id):
+    page_user = User.objects.get(id=user_id)
+    items = Ternal.objects.filter(user=page_user).order_by('-id')
+    for item in items:
+        item.text = linkify(item.text)
+    return render(request, "test.html", {"items": items, "page_user": page_user, "is_user_page": True})
+

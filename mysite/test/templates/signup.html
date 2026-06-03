@@ -5,9 +5,10 @@
     <title>YAMABIKO 新規登録</title>
     {% load static %}
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
+     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p class="taitoru">YAMABIKO</p>
+    <p class="signtagu">YAMABIKO</p>
     <div class="upwaku">
     <h1 class="sinki">新規登録</h1>
     <form method="post" enctype="multipart/form-data">
@@ -21,19 +22,70 @@
     <div class="pw1">
     {{ form.password1.label_tag }}
     <div class="pw1waku">{{ form.password1 }}</div>
-    </div>
-    <div class="pw2">
+</div>
+
+<div class="pw2">
     {{ form.password2.label_tag }}
     <div class="pw2waku">{{ form.password2 }}</div>
-    </div>
-    <input type="file" name="header" class="heddaa" accept="image/*">
-    <input type="file" name="icon" class="aikon" accept="image/*">
+</div>
+
+{% for error in form.non_field_errors %}
+    <p class="eraaa">{{ error }}</p>
+{% endfor %}
+    <!-- ヘッダー -->
+ <!--<label for="headerInput" class="header-label">
+    <img id="headerPreview" alt="ヘッダー">
+</label>
+<input type="file" id="headerInput" name="header" accept="image/*" style="display:none;">-->
+
+<!-- アイコン -->
+<label for="iconInput" class="icon-label">
+    <img id="iconPreview" alt="アイコン">
+</label>
+<input type="file" id="iconInput" name="icon" accept="image/*" style="display:none;">
+<p class="nick">ページのカテゴリ</p>
+<div class="category-select">
+    {% for value, label in form.fields.category.choices %}
+    <label class="cat-item">
+        <input type="radio" name="category" value="{{ value }}" {% if forloop.first %}checked{% endif %}>
+        <div class="cat-icon">
+            {% load static %}
+            <img src="{% static 'test/icons/' %}{{ value }}.svg" alt="{{ label }}">
+            <span>{{ label }}</span>
+        </div>
+    </label>
+    {% endfor %}
+</div>
+    <p class="nick">ニックネーム</p>
     <input type="text" name="name" class="nickname" style="border:1px solid black;">
+    <!--<input type="text" name="comment" class="comment" style="border:1px solid black;">-->
     <button type="submit" class="touro">登録</button>
     </form>
-    <a href="/login/" class="kotira">ログインはこちら</a>
-    <p class="nick">ニックネーム</p>
     </div>
-    
+    <a href="/login/" class="kotira">ログインはこちら</a>
+    <script>
+document.getElementById('headerInput').addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('headerPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+document.getElementById('iconInput').addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('iconPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+</body>
 </body>
 </html>

@@ -5,37 +5,48 @@
      <title>YAMABIKO</title>
     {% load static %}
      <link rel="stylesheet" href="{% static 'test/next.css' %}">
+     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
-  <label for="iconInput" >
-    <img id="iconPreview" src="{% if request.user.header %}{{ request.user.header.url }}{% else %}{% static 'test/default_icon.png' %}{% endif %}" alt="ヘッダー">
-  </label>
-  <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;" >
+  <!--<label for="iconInput">
+    <img id="iconPreview" src="{% if page_user and page_user.header %}{{ page_user.header.url }}{% elif request.user.header %}{{ request.user.header.url }}{% else %}{% static 'test/default_icon.png' %}{% endif %}" alt="ヘッダー">
+  </label>-->
+  <input type="file" id="iconInput" name="icon" accept="image/*" style="display: none;">
+  <!--<input type="text" name="comment" class="comment" placeholder="コメントを入力">-->
 </form>
-<div class="headshadow"></div>
-    <p class="name">{{ request.user.name }}</p>
-
-{% if request.user.icon %}
+<!--<div class="headshadow"></div>-->
+<p class="name">
+    {% load static %}
+    {% with category=page_user.category|default:request.user.category %}
+    <span class="cat-badge-wrap"><img src="{% static 'test/icons/' %}{{ category }}.svg" alt="{{ category }}" class="cat-badge"></span>
+    {% endwith %}
+    {% if page_user %}{{ page_user.name }}{% else %}{{ request.user.name }}{% endif %}
+</p>
+{% if page_user and page_user.icon %}
+    <img id="iconImage" src="{{ page_user.icon.url }}" alt="アイコン">
+{% elif request.user.icon %}
     <img id="iconImage" src="{{ request.user.icon.url }}" alt="アイコン">
 {% endif %}
-     <ul>
+ <ul class="{% if page_user %}posts-userpage{% endif %}">
   {% for item in items %}
   <div>
-    <li class="moji"><div class="waku">{{ item.text|safe }}</div></li>
+    <li class="moji"><div class="waku"><div class="zikoku">{{ item.created_at }}</div>{{ item.text|safe }}</div></li>
   {% endfor %}
 </ul>
-    
+    <div class="homee"><a href="/home/" class="homebtn">ホーム</a></div>
     <!--<p class="username">{{ request.user.username }}</p>-->
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div class="toolbar"></div>
-  <form method="POST"  action="/save/">
+  {% if not page_user %}
+<form method="POST" action="/save/">
     {% csrf_token %}
     <button class="hozon">>></button>
-    <textarea type="text" name="text"  cols="30" maxlength="5000"></textarea>
-  </form>
+    <textarea type="text" name="text" cols="30" maxlength="5000"></textarea>
+</form>
+{% endif %}
 <script src="{% static 'test/script.js' %}"></script>
 </body>
 </html>

@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <title>YAMABIKO</title>
     {% load static %}
-     <link rel="stylesheet" href="{% static 'test/next.css' %}">
+    <link rel="stylesheet" href="{% static 'test/next.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="line"></div>
-<h1 class="tagu">YAMABIKO</h1>
+    <div class="topp">
+    {% load static %}
+    <img src="{% static 'test/icons/' %}{{ request.user.category }}.svg" class="maaru" alt="カテゴリ">
+    <a href="/" class="topbtn">トップ</a>
+</div>
+    <p class="hota">YAMABIKO</p>
+{% for user in users %}
+<a href="/user/{{ user.id }}/" class="userbox">
+    {% load static %}
+    <img src="{% static 'test/icons/' %}{{ user.category }}.svg" alt="{{ user.category }}" class="userbox-cat">
+    <p class="una">{{ user.name }}</p>
+    <div class="latest">
+        {% with user.ternal_set.last as latest %}
+            {% if latest %}
+                {{ latest.text|safe }}
+            {% endif %}
+        {% endwith %}
+    </div>
+</a>
+{% endfor %}
 </body>
 </html>
