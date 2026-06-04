@@ -20,11 +20,7 @@
     <img src="{% static 'test/icons/' %}{{ user.category }}.svg" alt="{{ user.category }}" class="userbox-cat">
     <p class="una">{{ user.name }}</p>
     <div class="latest">
-        {% with user.ternal_set.last as latest %}
-            {% if latest %}
-                {{ latest.text|safe }}
-            {% endif %}
-        {% endwith %}
+        {{ user.bio }}
     </div>
 </a>
 {% endfor %}

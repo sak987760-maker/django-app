@@ -25,6 +25,7 @@
     {% endwith %}
     {% if page_user %}{{ page_user.name }}{% else %}{{ request.user.name }}{% endif %}
 </p>
+<p class="bio">{% if page_user %}{{ page_user.bio }}{% else %}{{ request.user.bio }}{% endif %}</p>
 {% if page_user and page_user.icon %}
     <img id="iconImage" src="{{ page_user.icon.url }}" alt="アイコン">
 {% elif request.user.icon %}

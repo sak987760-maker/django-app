@@ -77,7 +77,9 @@ def signup(request):
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             name = request.POST.get("name", "")  # getに変更
+            bio = request.POST.get("bio", "")  # 追加
             user = form.save()
+            user.bio = bio  # 追加
             user.name = name
             user.save()
             if request.FILES.get('header'):
