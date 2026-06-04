@@ -63,6 +63,7 @@ def home(request):
 def save_memo(request):
     if request.method == "POST":
         text = request.POST.get("text")
+        print(f"save_memo called, text: {text}, user: {request.user}")  # 追加
         Ternal.objects.create(text=text, user=request.user)
         return redirect('/')
     items = Ternal.objects.filter(user=request.user).order_by('-id')
