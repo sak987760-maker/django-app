@@ -115,9 +115,7 @@ def update_icon(request):
     return redirect('/')
 from django.db.models import Max
 def home_page(request):
-    users = User.objects.annotate(latest=Max('ternal__created_at')).order_by('-latest')[:20]
-    for u in users:
-        print(f"user: {u.name}, id: {u.id}, latest: {u.latest}")
+    users = User.objects.annotate(latest=Max('ternal__id')).order_by('-latest')[:20]
     return render(request, "home.html", {"users": users})
 def user_page(request, user_id):
     page_user = User.objects.get(id=user_id)
