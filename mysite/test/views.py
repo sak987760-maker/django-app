@@ -121,7 +121,7 @@ def home_page(request):
 def user_page(request, user_id):
     page_user = User.objects.get(id=user_id)
     items = Ternal.objects.filter(user=page_user).order_by('-id')
+    print(f"user_id: {user_id}, items count: {items.count()}")  # 追加
     for item in items:
         item.text = linkify(item.text)
-    return render(request, "test.html", {"items": items, "page_user": page_user, "is_user_page": True})
-
+    return render(request, "test.html", {"items": items, "page_user": page_user})
