@@ -52,13 +52,14 @@ def home(request):
             request.user.comment = comment
             request.user.save()
         if text:
-            Ternal.objects.create(text=text, user=request.user)
+            obj = Ternal.objects.create(text=text, user=request.user)
+            print(f"saved: {obj.id}, text: {text}")  # 追加
         return redirect('/')
     items = Ternal.objects.filter(user=request.user).order_by('-id')
+    print(f"home items count: {items.count()}")  # 追加
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
-
 def save_memo(request):
     if request.method == "POST":
         text = request.POST.get("text")
