@@ -65,8 +65,8 @@ def save_memo(request):
         if not request.user.is_authenticated:
             return redirect('/login/')
         text = request.POST.get("text")
-        print(f"save_memo called, user_id: {request.user.id}, text: {text}")
-        Ternal.objects.create(text=text, user=request.user)
+        obj = Ternal.objects.create(text=text, user=request.user)
+        print(f"saved: id={obj.id}, user_id={obj.user_id}, text={text}")
         return redirect('/')
 def delete_all(request):
     Ternal.objects.all().delete()
