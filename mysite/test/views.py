@@ -116,6 +116,10 @@ def update_icon(request):
 from django.db.models import Max
 def home_page(request):
     users = User.objects.annotate(latest=Max('ternal__id')).order_by('-latest')[:20]
+    from .models import Ternal
+    print(f"total ternals: {Ternal.objects.count()}")
+    for u in users:
+        print(f"user: {u.name}, id: {u.id}, latest: {u.latest}")
     return render(request, "home.html", {"users": users})
 def user_page(request, user_id):
     page_user = User.objects.get(id=user_id)
