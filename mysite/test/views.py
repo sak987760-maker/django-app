@@ -62,14 +62,12 @@ def home(request):
     return render(request, "test.html", {"items": items})
 def save_memo(request):
     if request.method == "POST":
+        if not request.user.is_authenticated:
+            return redirect('/login/')
         text = request.POST.get("text")
-        print(f"save_memo called, text: {text}, user: {request.user}")  # 追加
+        print(f"save_memo called, user_id: {request.user.id}, text: {text}")
         Ternal.objects.create(text=text, user=request.user)
         return redirect('/')
-    items = Ternal.objects.filter(user=request.user).order_by('-id')
-    for item in items:
-        item.text = linkify(item.text)
-    return render(request, "test.html", {"items": items})
 def delete_all(request):
     Ternal.objects.all().delete()
     return redirect('/')
