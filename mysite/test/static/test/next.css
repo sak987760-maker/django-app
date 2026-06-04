@@ -498,7 +498,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    position: absolute;
+    position: relative;
     top: 10px;
     left: -50px;
 }

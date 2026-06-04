@@ -116,7 +116,7 @@ def update_icon(request):
 from django.db.models import Max
 def home_page(request):
     from .models import Ternal
-    users_with_posts = Ternal.objects.values('user').distinct()
+    users_with_posts = Ternal.objects.values('user').order_by('-id').distinct()
     user_ids = [t['user'] for t in users_with_posts]
     users = User.objects.filter(id__in=user_ids)
     return render(request, "home.html", {"users": users})
