@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django import forms
 from .models import Ternal
 import re
-
+import json
 User = get_user_model()
 
 def save_comment(request):
