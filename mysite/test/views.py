@@ -78,7 +78,7 @@ def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
-            name = request.POST["name"]
+            name = request.POST.get("name", "")  # getに変更
             user = form.save()
             user.name = name
             user.save()
@@ -93,7 +93,6 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, "signup.html", {"form": form})
-
 def login_view(request):
     if request.method == "POST":
         form = AuthenticationForm(data=request.POST)
