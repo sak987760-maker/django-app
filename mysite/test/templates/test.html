@@ -26,11 +26,11 @@
     {% if page_user %}{{ page_user.name }}{% else %}{{ request.user.name }}{% endif %}
 </p>
 <p class="bio">{% if page_user %}{{ page_user.bio }}{% else %}{{ request.user.bio }}{% endif %}</p>
-{% if page_user and page_user.icon %}
+<!--{% if page_user and page_user.icon %}
     <img id="iconImage" src="{{ page_user.icon.url }}" alt="アイコン">
 {% elif request.user.icon %}
     <img id="iconImage" src="{{ request.user.icon.url }}" alt="アイコン">
-{% endif %}
+{% endif %}-->
  <ul class="{% if page_user %}posts-userpage{% endif %}">
   {% for item in items %}
   <div>
