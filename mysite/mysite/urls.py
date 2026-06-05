@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from test.views import home, save_memo, delete_all, signup, login_view, logout_view, update_icon, home_page, user_page, save_comment
+from test.views import home, save_memo, delete_all, signup, login_view, logout_view, update_icon, home_page, user_page, save_comment, delete_post, settings_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -32,4 +32,6 @@ urlpatterns = [
     path("home/", home_page),
     path("user/<int:user_id>/", user_page),
     path("save_comment/", save_comment),
+    path("delete_post/<int:post_id>/", delete_post), 
+    path("settings/", settings_view),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

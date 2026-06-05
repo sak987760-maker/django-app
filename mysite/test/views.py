@@ -6,6 +6,7 @@ from django import forms
 from .models import Ternal
 import re
 import json
+
 User = get_user_model()
 
 def save_comment(request):
@@ -60,6 +61,18 @@ def home(request):
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items})
+from .models import CATEGORY_CHOICES
+
+def settings_view(request):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+    if request.method == "POST":
+        request.user.name = request.POST.get("name", "")
+        request.user.bio = request.POST.get("bio", "")
+        request.user.category = request.POST.get("category", "all")
+        request.user.save()
+        return redirect('/')
+    return render(request, "setting.html", {"form_choices": CATEGORY_CHOICES})
 def save_memo(request):
     if request.method == "POST":
         if not request.user.is_authenticated:
@@ -118,9 +131,10 @@ def update_icon(request):
 from django.db.models import Max
 def home_page(request):
     from .models import Ternal
-    users_with_posts = Ternal.objects.values('user').order_by('-id').distinct()
-    user_ids = [t['user'] for t in users_with_posts]
+    latest_posts = Ternal.objects.values('user').annotate(latest_id=Max('id')).order_by('-latest_id')
+    user_ids = [t['user'] for t in latest_posts]
     users = User.objects.filter(id__in=user_ids)
+    users = sorted(users, key=lambda u: user_ids.index(u.id))
     return render(request, "home.html", {"users": users})
 def user_page(request, user_id):
     page_user = User.objects.get(id=user_id)
@@ -129,3 +143,8 @@ def user_page(request, user_id):
     for item in items:
         item.text = linkify(item.text)
     return render(request, "test.html", {"items": items, "page_user": page_user})
+def delete_post(request, post_id):
+    post = Ternal.objects.get(id=post_id)
+    if post.user == request.user:
+        post.delete()
+    return redirect('/')

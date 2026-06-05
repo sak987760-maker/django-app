@@ -18,10 +18,11 @@ class User(AbstractUser):
     header = models.ImageField(upload_to='headers/', blank=True, null=True)
     name = models.CharField(max_length=100, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='all')
+    bio = models.CharField(max_length=100, blank=True)
 
 class Ternal(models.Model):
     text = models.TextField(max_length=5000)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     comment = models.CharField(max_length=200, blank=True)
-    bio = models.CharField(max_length=100, blank=True)  # 追加
+    

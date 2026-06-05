@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8"> 
+      <title>YAMABIKO 設定</title>
+      {% load static %}
+    <link rel="stylesheet" href="{% static 'test/next.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <p class="signtagu">YAMABIKO</p>
+    <div class="upwaku">
+    <h1 class="sinki">設定</h1>
+    <form method="post">
+    {% csrf_token %}
+
+    <p class="nick">ページのカテゴリ</p>
+    <div class="category-select">
+        {% for value, label in form_choices %}
+        <label class="cat-item">
+            <input type="radio" name="category" value="{{ value }}" {% if request.user.category == value %}checked{% endif %}>
+            <div class="cat-icon">
+                <img src="{% static 'test/icons/' %}{{ value }}.svg" alt="{{ label }}">
+                <span>{{ label }}</span>
+            </div>
+        </label>
+        {% endfor %}
+    </div>
+
+    <p class="nick">ニックネーム</p>
+    <input type="text" name="name" class="nickname" value="{{ request.user.name }}" style="border:1px solid black;">
+
+    <p class="nick">一言コメント</p>
+    <input type="text" name="bio" class="nickname" value="{{ request.user.bio }}" style="border:1px solid black;" maxlength="100">
+
+    <button type="submit" class="touro">保存</button>
+    </form>
+    </div>
+    </body>
+</html>

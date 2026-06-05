@@ -8,7 +8,6 @@
      <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
     <form method="post" action="/update_icon/" enctype="multipart/form-data">
   {% csrf_token %}
   <!--<label for="iconInput">
@@ -26,18 +25,23 @@
     {% if page_user %}{{ page_user.name }}{% else %}{{ request.user.name }}{% endif %}
 </p>
 <p class="bio">{% if page_user %}{{ page_user.bio }}{% else %}{{ request.user.bio }}{% endif %}</p>
-<!--{% if page_user and page_user.icon %}
+{% if page_user and page_user.icon %}
     <img id="iconImage" src="{{ page_user.icon.url }}" alt="アイコン">
 {% elif request.user.icon %}
     <img id="iconImage" src="{{ request.user.icon.url }}" alt="アイコン">
-{% endif %}-->
+{% endif %}
  <ul class="{% if page_user %}posts-userpage{% endif %}">
   {% for item in items %}
   <div>
-    <li class="moji"><div class="waku"><div class="zikoku">{{ item.created_at }}</div>{{ item.text|safe }}</div></li>
+    <li class="moji"><div class="waku"><div class="zikoku">{{ item.created_at }}</div>{{ item.text|safe }}{% if not page_user %}
+            <a href="/delete_post/{{ item.id }}/" class="delete-btn">削除</a>{% endif %}</div>
+          </li>
   {% endfor %}
 </ul>
     <div class="homee"><a href="/home/" class="homebtn">ホーム</a></div>
+    {% if not page_user %}
+    <a href="/settings/" class="settingbtn">⚙</a>
+{% endif %}
     <!--<p class="username">{{ request.user.username }}</p>-->
     <p class="msg">{{ msg|linebreaksbr }}</p>
     <div class="toolbar"></div>
