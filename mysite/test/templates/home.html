@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>YAMABIKO</title>
+    <title>やまびこ</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'test/next.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
@@ -11,9 +11,9 @@
     <div class="topp">
     {% load static %}
     <img src="{% static 'test/icons/' %}{{ request.user.category }}.svg" class="maaru" alt="カテゴリ">
-    <a href="/" class="topbtn">トップ</a>
+    <a href="/" class="topbtn">ホーム</a>
 </div>
-    <p class="hota">YAMABIKO</p>
+    <p class="hota">やまびこ</p>
 {% for user in users %}
 <a href="/user/{{ user.id }}/" class="userbox">
     {% load static %}

@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
-            "ALTER TABLE test_ternal DROP COLUMN IF EXISTS bio;",
+            "SELECT 1;",  # ローカルでは何もしない
             migrations.RunSQL.noop
         ),
     ]

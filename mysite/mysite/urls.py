@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("omosiroitoomottakotohaarimasukakurumagayowakatta-admin/", admin.site.urls),
     path("", home),
     path("save/", save_memo),
     path("delete/", delete_all),
