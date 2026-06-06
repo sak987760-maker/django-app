@@ -658,6 +658,7 @@ textarea::-webkit-scrollbar-thumb {
 @media (max-width: 600px) {
     .hota {
         font-size: 40px;
+        width: 200px;
         left: 70%;
         transform: translateX(-50%);
         top: 20px;
@@ -669,7 +670,7 @@ textarea::-webkit-scrollbar-thumb {
     }
     .topbtn {
         font-size: 18px;
-        left: 40px;
+        left: 55px;
         width: 120px;
     }
     .maaru {
