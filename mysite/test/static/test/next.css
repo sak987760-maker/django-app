@@ -604,7 +604,7 @@ textarea::-webkit-scrollbar-thumb {
 @media (max-width: 600px) {
     .name {
         font-size: 40px;
-        top: 20px;
+        top: -30px;
         width: 100%;
     }
     .cat-badge {
@@ -612,7 +612,7 @@ textarea::-webkit-scrollbar-thumb {
         height: 40px;
     }
     .bio {
-        top: 80px;
+        top: 90px;
         font-size: 14px;
         width: 90%;
         text-align: center;
