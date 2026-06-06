@@ -577,7 +577,8 @@ textarea::-webkit-scrollbar-thumb {
     }
     .signtagu {
         font-size: 50px;
-        left: 50%;
+        left: 250px;
+        width: 300px;
         transform: translateX(-50%);
         top: -40px;
     }
