@@ -552,7 +552,7 @@ textarea::-webkit-scrollbar-thumb {
     }
     .logtagu {
         font-size: 40px;
-        left: 50%;
+        left: 200px;
         width: 300px;
         transform: translateX(-50%);
         top: -60px;
@@ -565,6 +565,6 @@ textarea::-webkit-scrollbar-thumb {
     }
     .logsin {
         font-size: 16px;
-        top: -60px;
+        top: 10px;
     }
 }
