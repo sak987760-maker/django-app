@@ -551,8 +551,9 @@ textarea::-webkit-scrollbar-thumb {
         padding: 20px;
     }
     .logtagu {
-        font-size: 50px;
+        font-size: 40px;
         left: 50%;
+        width: 300px;
         transform: translateX(-50%);
         top: -60px;
     }
