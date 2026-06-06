@@ -692,11 +692,12 @@ textarea::-webkit-scrollbar-thumb {
         height: 35px;
     }
     .una {
-        top: 0;
+        top: -10px;
+        font-size: 20px;
     }
     .latest {
-        font-size: 14px;
-        top: 30px;
+        font-size: 18px;
+        top: 50px;
         left: 60px;
     }
 }
