@@ -655,3 +655,47 @@ textarea::-webkit-scrollbar-thumb {
         left: calc(100% - 65px);
     }
 }
+@media (max-width: 600px) {
+    .hota {
+        font-size: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
+    }
+    .topp {
+        top: 80px;
+        width: 120px;
+        height: 45px;
+    }
+    .topbtn {
+        font-size: 18px;
+        left: 20px;
+        width: 120px;
+    }
+    .maaru {
+        width: 35px;
+        height: 35px;
+        top: 5px;
+        left: 10px;
+    }
+    .userbox {
+        left: 10px;
+        width: calc(100% - 20px);
+        top: 150px;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .userbox-cat {
+        width: 35px;
+        height: 35px;
+    }
+    .una {
+        top: 0;
+    }
+    .latest {
+        font-size: 14px;
+        top: 30px;
+        left: 60px;
+    }
+}
