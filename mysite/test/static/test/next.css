@@ -683,7 +683,7 @@ textarea::-webkit-scrollbar-thumb {
         left: 10px;
         width: 300px;
         top: 150px;
-        height: auto;
+        height: 60px;
         padding: 10px;
         font-size: 16px;
     }
