@@ -601,3 +601,57 @@ textarea::-webkit-scrollbar-thumb {
         top: 20px;
     }
 }
+@media (max-width: 600px) {
+    .name {
+        font-size: 40px;
+        top: 20px;
+        width: 100%;
+    }
+    .cat-badge {
+        width: 40px;
+        height: 40px;
+    }
+    .bio {
+        top: 80px;
+        font-size: 14px;
+        width: 90%;
+        text-align: center;
+    }
+    .homee {
+        top: 110px;
+        width: 120px;
+        height: 45px;
+    }
+    .homebtn {
+        font-size: 18px;
+        left: 20px;
+        width: 120px;
+    }
+    .settingbtn {
+        font-size: 20px;
+        top: 15px;
+        left: 15px;
+    }
+    ul {
+        padding-left: 10px;
+        padding-right: 10px;
+        top: 200px;
+    }
+    .moji {
+        font-size: 16px;
+    }
+    textarea {
+        position: fixed;
+        bottom: 10px;
+        top: auto;
+        left: 10px;
+        width: calc(100% - 80px);
+        font-size: 16px;
+    }
+    .hozon {
+        position: fixed;
+        bottom: 18px;
+        top: auto;
+        left: calc(100% - 65px);
+    }
+}
