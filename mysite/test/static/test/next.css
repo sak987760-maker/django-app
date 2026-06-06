@@ -552,10 +552,10 @@ textarea::-webkit-scrollbar-thumb {
     }
     .logtagu {
         font-size: 40px;
-        left: 300px;
+        left: 250px;
         width: 300px;
         transform: translateX(-50%);
-        top: 20px;
+        top: -120px;
     }
     .lognyu input {
         font-size: 14px !important;
