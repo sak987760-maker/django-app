@@ -568,3 +568,35 @@ textarea::-webkit-scrollbar-thumb {
         top: 10px;
     }
 }
+@media (max-width: 600px) {
+    .upwaku {
+        width: 85%;
+        margin: 40px auto;
+        padding: 20px;
+        top: 50px;
+    }
+    .signtagu {
+        font-size: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -40px;
+    }
+    .nick {
+        left: 0;
+    }
+    .eraa {
+        position: static;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .eraaa {
+        width: 100%;
+    }
+    .category-select {
+        justify-content: center;
+    }
+    .kotira {
+        top: 20px;
+    }
+}
